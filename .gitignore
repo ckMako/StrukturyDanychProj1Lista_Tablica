@@ -1,0 +1,14 @@
+#smieci z build
+build/
+
+#keep makefile
+!build/Makefile
+
+#exec
+.out
+.exe
+
+
+#vscode config
+.json
+.vscode/
