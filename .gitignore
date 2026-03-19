@@ -1,5 +1,5 @@
 #smieci z build
-build/
+build/*
 
 #keep makefile
 !build/Makefile
