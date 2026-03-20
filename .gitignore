@@ -4,11 +4,12 @@ build/*
 #keep makefile
 !build/Makefile
 
-#exec
+#exec/comile
+.o
 .out
 .exe
 
 
 #vscode config
 .json
-.vscode/
+.vscode/*

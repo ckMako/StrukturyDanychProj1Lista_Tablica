@@ -1,4 +1,6 @@
-#include <iostream>
+#pragma once
+
+#include"interface.h"
 
 template <class T>
 class cell {
@@ -10,10 +12,22 @@ class cell {
 
     cell(T passArg) {
         this->arg=passArg;
-        this->next=NULL;
+        this->next=nullptr;
     }
 
-    void point(cell<T>& passArg){
-        this->next=passArg;
+    T getArg() {
+        return arg;
+    }
+
+    void setArg(T arg){
+        this->arg=arg;
+    }
+
+    cell<T>* getNext() { 
+        return next; 
+    }
+
+    void setNext(cell<T>* arg){
+        this->next=arg;
     }
 };
