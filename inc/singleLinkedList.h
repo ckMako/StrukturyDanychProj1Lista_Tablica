@@ -1,10 +1,10 @@
 #pragma once
 
 #include "cell.h"
-#include "interface.h"
+#include "Interface.h"
 
 template<class T>
-class List1 :public interface<T> {
+class List1 :public Interface<T> {
 
     cell<T>* head;
     //cell<T>* tail;
@@ -31,7 +31,7 @@ class List1 :public interface<T> {
     }
 
     //dummies
-        void pushAtIndex(int Indx)override{
+        void pushAtIndex(int Indx,int w)override{
         std::cout<<"implement "<<std::endl;
     }
 
@@ -39,12 +39,13 @@ class List1 :public interface<T> {
         std::cout<<"implement "<<std::endl;
     }
 
-        T findX(int Indx)override{
-        std::cout<<"implement "<<std::endl;
-        T arg; return arg;
-    }
-        int findVal(T arg)override{
-        std::cout<<"implement "<<std::endl;
-        return 0;
-    }
+    //     T findX(int Indx)override{
+    //     std::cout<<"implement "<<std::endl;
+    //     T arg; return arg;
+    // }
+    //     int findVal(T arg)override{
+    //     std::cout<<"implement "<<std::endl;
+    //     return 0;
+    // }
+    void removeLast(){};
 };
