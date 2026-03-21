@@ -26,13 +26,16 @@ class Interface {
         //znajdz element o danym ineksie
         //zwraca pointer na ten element+ moze pointer na poprzedni elem??
         //nie wiem czy w interface bo wartosci przechowywane mozemy zrobic jako template<class>
-        //virtual T findX(int Indx)=0;
+         virtual T findX(int Indx)=0;
 
 
         //znajdz element o danej WARTOSCI a nie element numer 1500100900
         //zwraca index tego elementu, ale pointer moze byc szybszy
-        //virtual int findVal(T arg)=0;
+        virtual int findVal(T arg)=0;
 
         //wypisz elementy(bardziej do testow)
         virtual void print()=0;
+
+        //usuniecie wszystkiego
+        virtual void clear()=0;
 };

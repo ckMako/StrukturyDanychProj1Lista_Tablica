@@ -22,8 +22,19 @@ class ArrayList :public Interface<T> {
         delete[] ptr_;
     }
 
-    void resize() {
+    void resize() {//zwiększa rozmiar
         size_ *= 2;                  
+        T* newPtr = new T[size_];
+
+        for (int i = 0; i < count_; i++) {
+            newPtr[i] = ptr_[i];}
+
+        delete[] ptr_;                  
+        ptr_=newPtr;                 
+    }
+
+    void resize_s() {//zmniejsza rozmiar
+        size_ /= 2;                  
         T* newPtr = new T[size_];
 
         for (int i = 0; i < count_; i++) {
@@ -58,26 +69,43 @@ class ArrayList :public Interface<T> {
         }
 
         count_--;
+        if(count_==size_/2)resize_s();
 
     }
 
     void removeLast()override{
         if(count_==0){std::cout<<"Nie ma czego usuwac";return;}
         count_--;
+        if(count_==size_/2)resize_s();
 
     }
-
-  
-
-
 
      void print()override {  
         for(int i=0;i<count_;i++) std::cout<<ptr_[i];
        
         std::cout<<std::endl<<size_<<std::endl;}
 
-    //    int findVal(T arg)override{
-    //     std::cout<<"implement "<<std::endl;
-    //     return 0;
-    // }
+    int findVal(T arg) override {
+        for (int i = 0; i < count_; i++) {
+            if (ptr_[i] == arg) {
+                return i;
+            }
+    }
+    return -1; 
+}
+
+        T findX(int Indx) {
+        if (Indx < 0 || Indx >= count_) {
+        std::cout << "Indeks poza zakresem!" << std::endl;
+        return T(); s
+    }
+    return ptr_[Indx];
+}
+
+void clear() override {
+    delete[] ptr_;         
+    size_ = 10;             
+    count_ = 0;             
+    ptr_ = new T[size_];   
+}
 };

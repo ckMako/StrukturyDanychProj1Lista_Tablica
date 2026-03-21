@@ -39,13 +39,13 @@ class List1 :public Interface<T> {
         std::cout<<"implement "<<std::endl;
     }
 
-    //     T findX(int Indx)override{
-    //     std::cout<<"implement "<<std::endl;
-    //     T arg; return arg;
-    // }
-    //     int findVal(T arg)override{
-    //     std::cout<<"implement "<<std::endl;
-    //     return 0;
-    // }
+        T findX(int Indx)override{
+        std::cout<<"implement "<<std::endl;
+        T arg; return arg;
+    }
+        int findVal(T arg)override{
+        std::cout<<"implement "<<std::endl;
+        return 0;
+    }
     void removeLast(){};
 };
