@@ -97,7 +97,7 @@ class ArrayList :public Interface<T> {
         T findX(int Indx) {
         if (Indx < 0 || Indx >= count_) {
         std::cout << "Indeks poza zakresem!" << std::endl;
-        return T(); s
+        return T(); //s
     }
     return ptr_[Indx];
 }
