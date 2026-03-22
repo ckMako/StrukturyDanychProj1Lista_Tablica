@@ -1,7 +1,7 @@
 #pragma once
 
 #include "cell.h"
-#include "Interface.h"
+#include "interface.h"
 
 template<class T>
 class List1 :public Interface<T> {
@@ -39,6 +39,21 @@ class List1 :public Interface<T> {
         std::cout<<"implement "<<std::endl;
     }
 
+
+    cell<T>* findInd(int arg) {
+        cell<T>*tmp=nullptr;
+        if(arg>=this->Rozmiar){
+            return this->head;
+        }
+
+        tmp=this->head;
+        for (int i=arg;i>0;i--){
+            tmp=tmp->getNext();
+        }
+
+        return tmp;
+    }
+
         T findX(int Indx)override{
         std::cout<<"implement "<<std::endl;
         T arg; return arg;
@@ -47,5 +62,13 @@ class List1 :public Interface<T> {
         std::cout<<"implement "<<std::endl;
         return 0;
     }
+
+
+    void clear()override{};
+
     void removeLast(){};
+
+    int getSize(){
+        return Rozmiar;
+    }
 };

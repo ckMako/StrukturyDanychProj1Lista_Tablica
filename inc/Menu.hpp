@@ -1,6 +1,7 @@
 #pragma once
-#include"Interface.h"
-#include<iostream>
+
+#include"interface.h"
+// #include<iostream>
 #include<time.h>
 #include<chrono>
 #include<thread>
@@ -67,35 +68,36 @@ class Menu{
     int get_action(){return act_action_;}  
     
     
-
+    //remove elem from struct
     void remove(Interface<int>* str){
-    int i,o;
-    cout<<"Chcesz usunac na poczatku(1), na koncu(2), czy w danym indeksie(3)?"<<endl;
-    cin>>o;
-        switch (o){
-        case 1:str->removeAtIndex(0);break;    
-        case 2:str->removeLast();break;
-        case 3:{cout<<"Podaj indeks: ";
-            cin>>i;
-            str->removeAtIndex(i);break;}
-        default: cout<<"Bledna czynnosc! ";break;    
-    }
+        int i,o;
+        cout<<"Chcesz usunac na poczatku(1), na koncu(2), czy w danym indeksie(3)?"<<endl;
+        cin>>o;
+            switch (o){
+            case 1:str->removeAtIndex(0);break;    
+            case 2:str->removeLast();break;
+            case 3:{cout<<"Podaj indeks: ";
+                cin>>i;
+                str->removeAtIndex(i);break;}
+            default: cout<<"Bledna czynnosc! ";break;    
+        }
 }
 
-void add(Interface<int>* str){
-    int i,w,o;
-    cout<<"Jaka wartosc chcesz dodac?"<<endl;
-    cin>>w;
-    cout<<"Chcesz dodac na poczatku(1), na koncu(2), czy w danym indeksie(3)?"<<endl;
-    cin>>o;
-    switch (o){
-        case 1:str->pushAtIndex(0,w);break;
-        case 2:str->pushBack(w);break;
-        case 3:{cout<<"Podaj indeks: ";
-            cin>>i;
-            str->pushAtIndex(i,w);break;}
-        default: cout<<"Bledna czynnosc! ";break;    
-    }
+//add elem to struct
+    void add(Interface<int>* str){
+        int i,w,o;
+        cout<<"Jaka wartosc chcesz dodac?"<<endl;
+        cin>>w;
+        cout<<"Chcesz dodac na poczatku(1), na koncu(2), czy w danym indeksie(3)?"<<endl;
+        cin>>o;
+        switch (o){
+            case 1:str->pushAtIndex(0,w);break;
+            case 2:str->pushBack(w);break;
+            case 3:{cout<<"Podaj indeks: ";
+                cin>>i;
+                str->pushAtIndex(i,w);break;}
+            default: cout<<"Bledna czynnosc! ";break;    
+        }
 }
 
    
