@@ -36,8 +36,9 @@ int main(){
         }
     }
     std::cout<<Obj.getSize()<<std::endl;
-    for(int i=Obj.getSize(); i>0;i--){
-        std::cout<<"wart dla "<<i<<": "<<Obj.findInd(i)->getArg()<<std::endl;
+    for(int i = Obj.getSize() - 1; i >= 0; i--){
+        std::cout << "wart dla " << i << ": "
+                << Obj.findInd(i)->getArg() << std::endl;
     }
 
 //     bool running=true;

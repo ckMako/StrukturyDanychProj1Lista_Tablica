@@ -7,15 +7,31 @@ template<class T>
 class List1 :public Interface<T> {
 
     cell<T>* head;
-    //cell<T>* tail;
+    cell<T>* tail;
     int Rozmiar=0;
 
     public:
     List1(){
         head=nullptr;
+        tail=nullptr;
     }
 
     void pushBack(T arg) override {
+        cell<T>* tmp = new cell<T>(arg);
+        tmp->setNext(nullptr);
+
+        if (head == nullptr) {
+            head = tmp;
+            tail = tmp;
+        } else {
+            tail->setNext(tmp);
+            tail = tmp;
+        }
+
+        Rozmiar++;
+    }
+
+    void pushFront(T arg) {
         cell<T>* tmp =new cell<T>(arg);
         tmp->setNext(head);
         head=tmp;
@@ -31,15 +47,15 @@ class List1 :public Interface<T> {
     }
 
     //dummies
-        void pushAtIndex(int Indx,int w)override{
-        std::cout<<"implement "<<std::endl;
+        void pushAtIndex(int Indx,T w)override{
+        
     }
 
         void removeAtIndex(int Indx)override{
         std::cout<<"implement "<<std::endl;
     }
 
-
+    //rand values
     cell<T>* findInd(int arg) {
         cell<T>*tmp=nullptr;
         if(arg>=this->Rozmiar){
@@ -47,8 +63,8 @@ class List1 :public Interface<T> {
         }
 
         tmp=this->head;
-        for (int i=arg;i>0;i--){
-            tmp=tmp->getNext();
+        for (int i = 0; i < arg; i++) {
+            tmp = tmp->getNext();
         }
 
         return tmp;
