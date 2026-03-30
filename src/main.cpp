@@ -31,7 +31,8 @@ int main(){
             break;
         
         default:
-            struct_ptr->pushBack(tmp);
+            // struct_ptr->pushBack(tmp);
+            Obj.pushFront(tmp);
             break;
         }
     }

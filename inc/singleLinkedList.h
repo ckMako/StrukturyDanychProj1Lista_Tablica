@@ -21,9 +21,11 @@ class List1 :public Interface<T> {
         tmp->setNext(nullptr);
 
         if (head == nullptr) {
+            //zanim dodamy dane
             head = tmp;
             tail = tmp;
         } else {
+            //normalnie
             tail->setNext(tmp);
             tail = tmp;
         }
@@ -34,6 +36,16 @@ class List1 :public Interface<T> {
     void pushFront(T arg) {
         cell<T>* tmp =new cell<T>(arg);
         tmp->setNext(head);
+
+        if (head == nullptr) {
+            //zanim dodamy dane
+            head = tmp;
+            tail = tmp;
+        } else {
+            //normalnie
+            tmp->setNext(head);
+            head = tmp;
+        }
         head=tmp;
         Rozmiar++;
     }
@@ -48,7 +60,13 @@ class List1 :public Interface<T> {
 
     //dummies
         void pushAtIndex(int Indx,T w)override{
+        if(Indx>Rozmiar || Indx <=0) {
+            return;}
         
+        cell<T>* tmp=new cell<T>(w);
+        cell<T>* ptr=this->findInd(Indx--);
+
+
     }
 
         void removeAtIndex(int Indx)override{
@@ -58,7 +76,7 @@ class List1 :public Interface<T> {
     //rand values
     cell<T>* findInd(int arg) {
         cell<T>*tmp=nullptr;
-        if(arg>=this->Rozmiar){
+        if(arg>this->Rozmiar || arg<0){
             return this->head;
         }
 
