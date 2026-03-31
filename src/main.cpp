@@ -13,41 +13,32 @@
 void fromFile(Interface<int>* str);
 void randomVal(Interface<int>* str);
 
+/**
+ * szybkie losowanie val do testów
+ * @param str wskaznik na struct
+ * @param Num liczba wartosci do push
+ * @param Kernel pseudo kernel, do jakiej wartosci liczby
+ * @return zapisuje na strukturze
+ * 
+ */
+void randValFastAF(Interface<int>* str, int Num, int Kernel) {
+    for(int i=0; i<Num; i++) {
+        //zmienimy na cos z <random>
+        str->pushBack(rand()%(Kernel+1));
+    }
+}
 
 int main(){
 
     List2<int> Obj;
-    // List2<ArrayList<int>> Obj; ???
+    ArrayList<int> Tab;
+    // List2<ArrayList<int>> ObjGoofy; ???
     Interface<int>* struct_ptr=&Obj;
-
-
-
-    bool Run=true;
-    int tmp=0;
-    // while(Run){
-    //     std::cout<<"Podaj wartosc(11 for end)"<<std::endl;
-    //     std::cin>>tmp;
-    //     switch (tmp) {
-    //     case 11:
-    //         Run=false;
-    //         break;
-        
-    //     default:
-    //         // struct_ptr->pushBack(tmp);
-    //         Obj.pushBack(tmp);
-    //         break;
-    //     }
-
-    // }
-
-    for(int i=1;i<=10;i++) {
-        Obj.pushBack(i);
-    }
-
-    Obj.print();
-    Obj.removeAtIndex(0);
-    // PRINTF(Obj.findVal(1));
-    Obj.print();
+    randValFastAF(struct_ptr, 30, 100);
+    struct_ptr->print();
+    struct_ptr=&Tab;
+    randValFastAF(struct_ptr, 30, 100);
+    struct_ptr->print();
 
 
 
