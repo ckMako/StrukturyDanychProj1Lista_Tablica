@@ -4,9 +4,11 @@
 #include "../inc/Menu.hpp"
 #include "../inc/interface.h"
 #include "../inc/singleLinkedList.h"
+#include "../inc/doubleLinkedList.h"
 #include "../inc/ArrayList.hpp"
 // using namespace std;
 
+#define PRINTF(arg) std::cout<<"Printf: "<<(arg)<<std::endl
 
 void fromFile(Interface<int>* str);
 void randomVal(Interface<int>* str);
@@ -14,33 +16,41 @@ void randomVal(Interface<int>* str);
 
 int main(){
 
-    List1<int> Obj;
+    List2<int> Obj;
+    // List2<ArrayList<int>> Obj; ???
     Interface<int>* struct_ptr=&Obj;
 
 
 
     bool Run=true;
     int tmp=0;
-    while(Run){
-        std::cout<<"Podaj wartosc(11 for end)"<<std::endl;
-        std::cin>>tmp;
-        switch (tmp)
-        {
-        case 11:
-            Run=false;
-            break;
+    // while(Run){
+    //     std::cout<<"Podaj wartosc(11 for end)"<<std::endl;
+    //     std::cin>>tmp;
+    //     switch (tmp) {
+    //     case 11:
+    //         Run=false;
+    //         break;
         
-        default:
-            // struct_ptr->pushBack(tmp);
-            Obj.pushFront(tmp);
-            break;
-        }
+    //     default:
+    //         // struct_ptr->pushBack(tmp);
+    //         Obj.pushBack(tmp);
+    //         break;
+    //     }
+
+    // }
+
+    for(int i=1;i<=10;i++) {
+        Obj.pushBack(i);
     }
-    std::cout<<Obj.getSize()<<std::endl;
-    for(int i = Obj.getSize() - 1; i >= 0; i--){
-        std::cout << "wart dla " << i << ": "
-                << Obj.findInd(i)->getArg() << std::endl;
-    }
+
+    Obj.print();
+    Obj.removeAtIndex(0);
+    // PRINTF(Obj.findVal(1));
+    Obj.print();
+
+
+
 
 //     bool running=true;
 //     Menu<int> menu;

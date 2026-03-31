@@ -6,13 +6,14 @@ template <class T>
 class cell {
     T arg;
     cell<T>* next;
-    // cell* prev;
+    cell* prev;
 
     public:
 
     cell(T passArg) {
         this->arg=passArg;
         this->next=nullptr;
+        this->prev=nullptr;
     }
 
     T getArg() {
@@ -29,5 +30,13 @@ class cell {
 
     void setNext(cell<T>* arg){
         this->next=arg;
+    }
+
+    cell<T>* getPrev() { 
+        return prev; 
+    }
+
+    void setPrev(cell<T>* arg){
+        this->prev=arg;
     }
 };

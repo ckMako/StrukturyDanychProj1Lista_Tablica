@@ -9,15 +9,17 @@
 #include "cell.h"
 #include "interface.h"
 
+#define PASS std::cout<<"implement"<<std::endl;
+
 template<class T>
-class List1 :public Interface<T> {
+class List2 :public Interface<T> {
 
     cell<T>* head;
     cell<T>* tail;
     unsigned int Rozmiar=0;
 
     public:
-    List1(){
+    List2(){
         head=nullptr;
         tail=nullptr;
     }
@@ -31,6 +33,7 @@ class List1 :public Interface<T> {
     void pushBack(T arg) override {
         cell<T>* tmp = new cell<T>(arg);
         tmp->setNext(nullptr);
+        tmp->setPrev(nullptr);
 
         if (head == nullptr) {
             //zanim dodamy dane
@@ -38,6 +41,7 @@ class List1 :public Interface<T> {
             tail = tmp;
         } else {
             //normalnie
+            tmp->setPrev(tail);
             tail->setNext(tmp);
             tail = tmp;
         }
@@ -54,6 +58,7 @@ class List1 :public Interface<T> {
     void pushFront(T arg) {
         cell<T>* tmp =new cell<T>(arg);
         tmp->setNext(head);
+        //tmp setPrev nullptr
 
         if (head == nullptr) {
             //zanim dodamy dane
@@ -91,7 +96,7 @@ class List1 :public Interface<T> {
  * @param w wartosc do dodania
  * @return void
  */
-        void pushAtIndex(int Indx,T arg)override{
+    void pushAtIndex(int Indx,T arg)override{
         if(Indx>Rozmiar || Indx <0) {
             std::cout<<"none"<<std::endl;
             return;}
@@ -99,6 +104,7 @@ class List1 :public Interface<T> {
         if(Indx==0){
             cell<T>*temp=new cell<T>(arg);
             temp->setNext(head);
+            //prev->null
             head=temp;
             return;
         }
@@ -106,6 +112,7 @@ class List1 :public Interface<T> {
         if(Indx==Rozmiar){
             cell<T>*temp=new cell<T>(arg);
             tail->setNext(temp);
+            temp->setPrev(tail);
             tail=temp;
             return;
         }
@@ -113,6 +120,8 @@ class List1 :public Interface<T> {
         cell<T>* tmp=new cell<T>(arg);
         cell<T>* ptr=this->findInd(--Indx);
         tmp->setNext(ptr->getNext());
+        tmp->setPrev(ptr);
+        ptr->getNext()->setPrev(tmp);
         ptr->setNext(tmp);
         Rozmiar++;
 
@@ -128,10 +137,7 @@ class List1 :public Interface<T> {
         if(Indx>(Rozmiar-1) || Indx <0) {
             std::cout<<"none"<<std::endl;
             return;}
-        if(Indx==0) {
-            cell<T>* tmp=head;
 
-        }
         if(Rozmiar<=2){
             return;}
         
@@ -141,12 +147,14 @@ class List1 :public Interface<T> {
         if(Indx==0){        
             tmp=head;
             head=tmp->getNext();
+            head->setPrev(nullptr);
             delete tmp;
             Rozmiar--;
         } else {
             tmp=this->findInd(--Indx);
             cell<T>* toDelete=tmp->getNext();
             tmp->setNext(toDelete->getNext());
+            toDelete->getNext()->setPrev(tmp);
             delete toDelete;
             Rozmiar--;
         }
@@ -175,6 +183,18 @@ class List1 :public Interface<T> {
         return tmp;
     }
 
+    /**
+ * finInd ale od tail
+ * @param arg indeks elementu
+ * @return wskaźnik na element
+ */
+    cell<T>* findInd_backdoor(int arg) {PASS}
+
+    /**
+ * Znajdz wartosc pod indeksem
+ * @param arg indeks elementu
+ * @return wartosc pod indeksem
+ */
     T findX(int arg) override {
         cell<T>* tmp=nullptr;
         tmp=this->findInd(arg);

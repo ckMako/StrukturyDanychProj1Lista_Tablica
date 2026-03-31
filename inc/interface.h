@@ -1,4 +1,10 @@
 #pragma once
+/**
+ * 
+ * @param 
+ * @return 
+ */
+
 
 #include<iostream>
 
@@ -24,7 +30,7 @@ class Interface {
         virtual void removeLast()=0;
 
         //znajdz element o danym ineksie
-        //zwraca pointer na ten element+ moze pointer na poprzedni elem??
+        //zwraca wartosc elem
         //nie wiem czy w interface bo wartosci przechowywane mozemy zrobic jako template<class>
          virtual T findX(int Indx)=0;
 
