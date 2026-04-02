@@ -1,11 +1,9 @@
 #pragma once
 #include"Interface.h"
 #include<iostream>
-#include<time.h>
 #include<chrono>
-#include<thread>
 using namespace std;
-using namespace  chrono_literals;
+using namespace std::chrono;
 
 template<class T>
 class Menu{
@@ -85,9 +83,19 @@ class Menu{
         case 1:{cout<<"Podaj indeks: ";
             cin>>i;
             val=str-> findX(i);break;}
-        case 2:{cout<<"Podaj wartosc: ";
-            cin>>val;
-            i=str-> findVal(val);break;}
+        case 2: {
+    cout << "Podaj wartosc: ";
+    cin >> val;
+
+    auto start = high_resolution_clock::now();
+    i = str->findVal(val);
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+
+    if (i != -1) {cout << "Czas wyszukiwania: " << duration.count()<<" us"<< endl;} 
+    else {cout << "Brak wystapien tej wartosci w strukturze." << endl;}
+    break; 
+}
        
         default: cout<<"Bledna czynnosc! ";break;    
     }
@@ -109,7 +117,11 @@ class Menu{
         case 2:str->removeLast();break;
         case 3:{cout<<"Podaj indeks: ";
             cin>>i;
-            str->removeAtIndex(i);break;}
+            auto start = high_resolution_clock::now();
+            str->removeAtIndex(i);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            cout<<"Czas usuwania: "<<duration.count()<<"us"<<endl;break;}
         default: cout<<"Bledna czynnosc! ";break;    
     }
 }
@@ -125,7 +137,12 @@ void add(Interface<int>* str){
         case 2:str->pushBack(w);break;
         case 3:{cout<<"Podaj indeks: ";
             cin>>i;
-            str->pushAtIndex(i,w);break;}
+            auto start = high_resolution_clock::now();
+            str->pushAtIndex(i,w);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            cout<<"Czas usuwania: "<<duration.count()<<"us"<<endl;break;
+        }
         default: cout<<"Bledna czynnosc! ";break;    
     }
 }

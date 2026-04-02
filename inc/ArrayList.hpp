@@ -81,11 +81,12 @@ class ArrayList :public Interface<T> {
     }
 
      void print()override {  
-        for(int i=0;i<count_;i++) std::cout<<ptr_[i];
+        for(int i=0;i<count_;i++) std::cout<<ptr_[i]<<" ";
        
         std::cout<<std::endl<<size_<<std::endl;}
 
     int findVal(T arg) override {
+        
         for (int i = 0; i < count_; i++) {
             if (ptr_[i] == arg) {
                 return i;

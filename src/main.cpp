@@ -1,7 +1,8 @@
 #include<iostream>
-#include<String>
+#include<string>
+#include<filesystem>
 #include <fstream>
-#include <cstdlib>
+#include <random>
 #include <chrono>
 #include "../inc/Menu.hpp"
 #include "../inc/Interface.h"
@@ -10,6 +11,7 @@
 #include "../inc/ArrayList.hpp"
 using namespace std;
 using namespace std::chrono;
+namespace fs = std::filesystem;
 
 
 void fromFile(Interface<int>* str);
@@ -61,26 +63,29 @@ int main(){
 void fromFile(Interface<int>* str){
     string fileName;
     cout << "Podaj nazwe pliku: ";
-    cin >> fileName;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    getline(cin, fileName);
 
-   ifstream file(fileName);
+    ifstream file(fileName);
 
     if (!file.is_open()) {
-        std::cout << "Blad: Nie udalo sie otworzyc pliku!" << std::endl;
-        return;
-    }
+        cout << "Blad: Nie udalo sie otworzyc pliku: " << fileName << endl;
+        return;}
+    
     str->clear();
-
     int value;
     while (file >> value) { 
         str->pushBack(value);
     }
 
     file.close();
+    cout << "Pomyslnie wczytano dane." << endl;
 }
 
 void randomVal(Interface<int>* str, unsigned int seed) {
-    srand(seed); 
+    mt19937 generatorID(seed);     
+    mt19937 generatorValue(seed);
+    
     unsigned int size;
 
      bool success = false;
@@ -100,17 +105,20 @@ void randomVal(Interface<int>* str, unsigned int seed) {
             cout << e.what() << endl << endl;
         }
     }
+    unsigned int id = generatorID() % size;
+    int example;
 
     auto start = high_resolution_clock::now();
 
     for(int i = 0; i < size; i++) {
-        int value = rand() % 1000;
+        int value = generatorValue() % 1000;
         str->pushBack(value);
+        if(i==id) example=value;
     }
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
-    cout << "Wypelnianie zakonczone. Czas: " << duration.count() << " ms." << endl;
+    cout << "Wypelnianie zakonczone. Czas: " << duration.count() << " us.\nPrzykladowa wartosc: "<<example <<endl;
 }
 
 
