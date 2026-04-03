@@ -1,5 +1,5 @@
 #pragma once
-#include"Interface.h"
+#include"interface.h"
 #include<iostream>
 #include<chrono>
 using namespace std;

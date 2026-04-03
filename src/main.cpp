@@ -5,7 +5,7 @@
 #include <random>
 #include <chrono>
 #include "../inc/Menu.hpp"
-#include "../inc/Interface.h"
+#include "../inc/interface.h"
 #include "../inc/singleLinkedList.h"
 #include "../inc/doubleLinkedList.h"
 #include "../inc/ArrayList.hpp"
@@ -25,7 +25,7 @@ int main(){
     int action=0;
     ArrayList<int> tab;
     List1<int> list;
-    //List2<int> list2;
+    List2<int> list2;
     Interface<int>* str;
      
     while(running){
@@ -35,7 +35,7 @@ int main(){
         switch(structure){
             case 1: str=&tab;break;
             case 2: str=&list;break;
-            //case 3:str=&list2;break;
+            case 3:str=&list2;break;
         }
 
        
