@@ -5,11 +5,11 @@ build/*
 !build/Makefile
 
 #exec/comile
-.o
-.out
-.exe
+*.o
+*.out
+*.exe
 
 
 #vscode config
-.json
+*.json
 .vscode/*
