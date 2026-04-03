@@ -32,12 +32,12 @@ int main(){
     
     ArrayList<int> tab[100];
     List1<int> list[100];
-    //List2<int> list2[100];
+    List2<int> list2[100];
     Interface<int>* str[100];//tablica wskaźników na 100 struktur
     
         ArrayList<int> tab_s;
         List1<int> list_s;
-        //List2<int> list2_s;
+        List2<int> list2_s;
         Interface<int>* str_s;//wskaźnik na pojedynczą strukturę
    
      
@@ -51,14 +51,14 @@ int main(){
             switch(structure){
                 case 1: str[i] = &tab[i]; break;
                 case 2: str[i] = &list[i]; break;
-                //case 3: str[i] = &list2[i]; break;
+                case 3: str[i] = &list2[i]; break;
             }
         }}
         else{
             switch(structure){
                 case 1: str_s = &tab_s; break;
                 case 2: str_s = &list_s; break;
-                //case 3: str_s = &list2_s; break;
+                case 3: str_s = &list2_s; break;
             }
         }
 
