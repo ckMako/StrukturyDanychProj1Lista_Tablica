@@ -13,6 +13,31 @@ class Menu{
     public:
     Menu(){};
     ~Menu(){};
+
+    bool test(){
+        bool t;
+        bool success = false;
+
+    while (!success) {
+        try {cout<<"Robisz test? [1-tak, 0-nie]";
+
+            if (!(cin >> t)) {
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                throw std::invalid_argument("Blad: Podany znak nie jest liczba calkowita!");
+            }
+
+            success = true;
+
+        } catch (const std::invalid_argument& e) {
+            system("cls");
+            cout << e.what() << endl << endl;
+        }
+    }
+    return t;
+
+    }
+
     void start(){
         int w;
         bool success = false;
@@ -125,6 +150,33 @@ class Menu{
         default: cout<<"Bledna czynnosc! ";break;    
     }
 }
+void remove100(Interface<int>* str[100]){
+    int i = 0, o;
+    
+    cout << "Chcesz usunac na poczatku(1), na koncu(2), czy w danym indeksie(3)?" << endl;
+    cin >> o;
+    
+    if(o == 3){
+        cout << "Podaj indeks: ";
+        cin >> i;
+    }
+
+    auto start = high_resolution_clock::now();
+
+    for(int s = 0; s < 100; s++) {
+        switch (o){
+            case 1: str[s]->removeAtIndex(0); break;
+            case 2: str[s]->removeLast(); break;
+            case 3: str[s]->removeAtIndex(i); break;
+            default: if(s == 0) cout << "Bledna czynnosc!" << endl; return; 
+        }
+    }
+
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+
+    cout << "Średni czas: " << duration.count() / 100 << " us" << endl;
+}
 
 void add(Interface<int>* str){
     int i,w,o;
@@ -141,11 +193,44 @@ void add(Interface<int>* str){
             str->pushAtIndex(i,w);
             auto stop = high_resolution_clock::now();
             auto duration = duration_cast<microseconds>(stop - start);
-            cout<<"Czas usuwania: "<<duration.count()<<"us"<<endl;break;
+            cout<<"Czas dodawania: "<<duration.count()<<"us"<<endl;break;
         }
         default: cout<<"Bledna czynnosc! ";break;    
     }
 }
+
+void add100(Interface<int>* str[100]){
+    int i = 0, w, o;
+    
+    cout << "Jaka wartosc chcesz dodac?" << endl;
+    cin >> w;
+    cout << "Chcesz dodac na poczatku(1), na koncu(2), czy w danym indeksie(3)?" << endl;
+    cin >> o;
+    
+    if(o == 3){
+        cout << "Podaj indeks: ";
+        cin >> i;
+    }
+
+    auto start = high_resolution_clock::now();
+
+    for(int s = 0; s < 100; s++) {
+        switch (o){
+            case 1: str[s]->pushAtIndex(0, w); break;
+            case 2: str[s]->pushBack(w); break;
+            case 3: str[s]->pushAtIndex(i, w); break;
+            default: if(s == 0) cout << "Bledna czynnosc!" << endl; return; 
+        }
+    }
+
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+
+    cout << "Sredni czas: " << duration.count() /100<< " us" << endl;
+
+}
+
+
     
 
 }; 

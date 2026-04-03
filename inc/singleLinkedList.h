@@ -198,11 +198,21 @@ class List1 :public Interface<T> {
             }
         }
         std::cout<<"nie znaleziono val" <<std::endl;
-        return 0;
+        return -1;
     }
 
 
-    void clear()override{};
+    void clear()override{
+        cell<T>* current = head;
+        while(current != nullptr) {
+            cell<T>* next = current->getNext();
+            delete current;
+            current = next;
+        }
+        head = nullptr;
+        tail = nullptr;
+        Rozmiar = 0;
+    };
 
     void removeLast(){
         cell<T>* tmp=findInd(Rozmiar-2);
