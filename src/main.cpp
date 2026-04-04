@@ -19,6 +19,8 @@ const int count= 100;//ile tablic/list
 void fromFile(Interface<int>* str);
 void randomVal100(Interface<int>* str[100], unsigned int seed); 
 void randomVal(Interface<int>* str, unsigned int seed);
+template<class T>
+void search100(Interface<T>* str[100], unsigned int seed);
 
 int main(){
     bool running=true;
@@ -81,9 +83,7 @@ int main(){
                     break;
                 case 2: menu.add100(str);break;
                 case 3: menu.remove100(str);break; 
-                case 4: 
-                    for(int i = 0; i < 100; i++) menu.search(str[i]); //!!!
-                    break;
+                case 4: search100(str,7);break;
                 case 5: 
                     for(int i = 0; i < 100; i++) str[i]->clear(); 
                     break;
@@ -203,4 +203,30 @@ for(int s = 0; s < 100; s++) {
     
     
         cout << "Sredni czas : " << duration.count() / 100 << " us.\n";
+}
+
+template<class T>
+void search100(Interface<T>* str[100], unsigned int seed) {
+    T value;
+    long long totalTime= 0;
+    mt19937 generatorId(seed);
+    
+    for(int s = 0; s < 100; s++) {
+  if(s%10==0){// dla każdego zestawu struktur losuje wartość, która będzie w nich wyszukiwana
+    mt19937 generatorId(seed);
+    int id=generatorId() % 1000;
+    value = str[s]->findX(id);
+    seed*=2;
+    }
+  
+     auto start = chrono::high_resolution_clock::now();
+                
+                int d=str[s]->findVal(value);
+               
+                auto end = chrono::high_resolution_clock::now();
+                totalTime += chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+                
+
+}
+    cout << "Sredni czas wyszukiwania: " << totalTime / 100 << " ns.\n";
 }

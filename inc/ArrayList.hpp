@@ -14,7 +14,7 @@ class ArrayList :public Interface<T> {
     public:
     ArrayList(){
     count_=0;
-    size_=10;
+    size_=2;
     ptr_=new T[size_];
     }
 

@@ -133,7 +133,7 @@ class Menu{
     
     
 
-    void remove(Interface<int>* str){
+    void remove(Interface<T>* str){
     int i,o;
     cout<<"Chcesz usunac na poczatku(1), na koncu(2), czy w danym indeksie(3)?"<<endl;
     cin>>o;
@@ -150,7 +150,7 @@ class Menu{
         default: cout<<"Bledna czynnosc! ";break;    
     }
 }
-void remove100(Interface<int>* str[100]){
+void remove100(Interface<T>* str[100]){
     int i = 0, o;
     
     cout << "Chcesz usunac na poczatku(1), na koncu(2), czy w danym indeksie(3)?" << endl;
@@ -178,8 +178,9 @@ void remove100(Interface<int>* str[100]){
     cout << "Średni czas: " << duration.count() / 100 << " us" << endl;
 }
 
-void add(Interface<int>* str){
-    int i,w,o;
+void add(Interface<T>* str){
+    int i,o;
+    T w;
     cout<<"Jaka wartosc chcesz dodac?"<<endl;
     cin>>w;
     cout<<"Chcesz dodac na poczatku(1), na koncu(2), czy w danym indeksie(3)?"<<endl;
@@ -199,9 +200,9 @@ void add(Interface<int>* str){
     }
 }
 
-void add100(Interface<int>* str[100]){
-    int i = 0, w, o;
-    
+void add100(Interface<T>* str[100]){
+    int i = 0, o;
+    T w;
     cout << "Jaka wartosc chcesz dodac?" << endl;
     cin >> w;
     cout << "Chcesz dodac na poczatku(1), na koncu(2), czy w danym indeksie(3)?" << endl;
