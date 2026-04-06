@@ -1,11 +1,13 @@
+#include "../inc/tempCodeRunnerFile.h"
+
 void fromFile(Interface<int>* str){
-    string fileName;
-    cout << "Podaj nazwe pliku: ";
-    cin >> fileName;
+    std::string fileName;
+    std::cout << "Podaj nazwe pliku: ";
+    std::cin >> fileName;
 
-   ifstream file(fileName);
+   std::ifstream file(fileName);
 
-    if (!file.is_open()) {cout << "Blad: Nie udalo sie otworzyc pliku!" << std::endl;
+    if (!file.is_open()) {std::cout << "Blad: Nie udalo sie otworzyc pliku!" << std::endl;
         return;}
     str->clear();
 

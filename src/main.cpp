@@ -9,6 +9,8 @@
 #include "../inc/singleLinkedList.h"
 #include "../inc/doubleLinkedList.h"
 #include "../inc/ArrayList.hpp"
+#include "../inc/tempCodeRunnerFile.h"
+
 using namespace std;
 using namespace std::chrono;
 namespace fs = std::filesystem;
@@ -16,7 +18,7 @@ namespace fs = std::filesystem;
 
 const int count= 100;//ile tablic/list 
 
-void fromFile(Interface<int>* str);
+// void fromFile(Interface<int>* str);
 void randomVal100(Interface<int>* str[100], unsigned int seed); 
 void randomVal(Interface<int>* str, unsigned int seed);
 template<class T>
@@ -102,28 +104,28 @@ int main(){
     return 0;
 }
 
-void fromFile(Interface<int>* str){
-    string fileName;
-    cout << "Podaj nazwe pliku: ";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
-    getline(cin, fileName);
+// void fromFile(Interface<int>* str){
+//     string fileName;
+//     cout << "Podaj nazwe pliku: ";
+//     cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+//     getline(cin, fileName);
 
-    ifstream file(fileName);
+//     ifstream file(fileName);
 
-    if (!file.is_open()) {
-        cout << "Blad: Nie udalo sie otworzyc pliku: " << fileName << endl;
-        return;
-    }
+//     if (!file.is_open()) {
+//         cout << "Blad: Nie udalo sie otworzyc pliku: " << fileName << endl;
+//         return;
+//     }
     
-    str->clear();
-    int value;
-    while (file >> value) { 
-        str->pushBack(value);
-    }
+//     str->clear();
+//     int value;
+//     while (file >> value) { 
+//         str->pushBack(value);
+//     }
 
-    file.close();
-    cout << "Pomyslnie wczytano dane." << endl;
-}
+//     file.close();
+//     cout << "Pomyslnie wczytano dane." << endl;
+// }
 
 
 void randomVal(Interface<int>* str, unsigned int seed) {

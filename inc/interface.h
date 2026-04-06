@@ -1,6 +1,7 @@
 #pragma once
 
 #include<iostream>
+#include<fstream>
 
 //mozemy uzyc bo moze przyda sie polimorfizm, ale mozemy tez wywalic
 template<class T> //mozna ew zrobic na int czy cos
