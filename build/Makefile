@@ -201,30 +201,6 @@ src/singleLinkedList.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/algoSortowanie.dir/build.make CMakeFiles/algoSortowanie.dir/src/singleLinkedList.cpp.s
 .PHONY : src/singleLinkedList.cpp.s
 
-src/tempCodeRunnerFile.o: src/tempCodeRunnerFile.cpp.o
-.PHONY : src/tempCodeRunnerFile.o
-
-# target to build an object file
-src/tempCodeRunnerFile.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/algoSortowanie.dir/build.make CMakeFiles/algoSortowanie.dir/src/tempCodeRunnerFile.cpp.o
-.PHONY : src/tempCodeRunnerFile.cpp.o
-
-src/tempCodeRunnerFile.i: src/tempCodeRunnerFile.cpp.i
-.PHONY : src/tempCodeRunnerFile.i
-
-# target to preprocess a source file
-src/tempCodeRunnerFile.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/algoSortowanie.dir/build.make CMakeFiles/algoSortowanie.dir/src/tempCodeRunnerFile.cpp.i
-.PHONY : src/tempCodeRunnerFile.cpp.i
-
-src/tempCodeRunnerFile.s: src/tempCodeRunnerFile.cpp.s
-.PHONY : src/tempCodeRunnerFile.s
-
-# target to generate assembly for a file
-src/tempCodeRunnerFile.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/algoSortowanie.dir/build.make CMakeFiles/algoSortowanie.dir/src/tempCodeRunnerFile.cpp.s
-.PHONY : src/tempCodeRunnerFile.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -243,9 +219,6 @@ help:
 	@echo "... src/singleLinkedList.o"
 	@echo "... src/singleLinkedList.i"
 	@echo "... src/singleLinkedList.s"
-	@echo "... src/tempCodeRunnerFile.o"
-	@echo "... src/tempCodeRunnerFile.i"
-	@echo "... src/tempCodeRunnerFile.s"
 .PHONY : help
 
 

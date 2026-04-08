@@ -18,7 +18,18 @@ namespace fs = std::filesystem;
 
 const int count= 100;//ile tablic/list 
 
-// void fromFile(Interface<int>* str);
+/**
+ * Generuje dane dopliku daneRun.txt
+ * Pomyslalem ze to mialas na mysli robiac
+ * func fromFile
+ * moze przyspieszy dzialanie programu
+ * @param int ile danych wygenerowac
+ * @param unsignedInt seed
+ * @return generuje dane do pliku
+ */ string FileToGen ="daneRun";
+void generateToFile(int, unsigned int);
+
+void fromFile(Interface<int>* str);
 void randomVal100(Interface<int>* str[100], unsigned int seed); 
 void randomVal(Interface<int>* str, unsigned int seed);
 template<class T>
@@ -101,31 +112,39 @@ int main(){
         system("cls");
     }
 
+
+    generateToFile(1000, 1000);
+
     return 0;
 }
 
-// void fromFile(Interface<int>* str){
-//     string fileName;
-//     cout << "Podaj nazwe pliku: ";
-//     cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
-//     getline(cin, fileName);
+/**
+ * @param interface pointer na struct
+ * @return zapisuje dane z pliku na struct
+ */
+void fromFile(Interface<int>* str){
+    string fileName;
+    cout << "Podaj nazwe pliku: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    getline(cin, fileName);
+    fs::path pathToFlie = "../DATA/"+fileName+".txt";
 
-//     ifstream file(fileName);
+    ifstream file(pathToFlie);
 
-//     if (!file.is_open()) {
-//         cout << "Blad: Nie udalo sie otworzyc pliku: " << fileName << endl;
-//         return;
-//     }
+    if (!file.is_open()) {
+        cout << "Blad: Nie udalo sie otworzyc pliku: " << fileName << endl;
+        return;
+    }
     
-//     str->clear();
-//     int value;
-//     while (file >> value) { 
-//         str->pushBack(value);
-//     }
+    str->clear();
+    int value;
+    while (file >> value) { 
+        str->pushBack(value);
+    }
 
-//     file.close();
-//     cout << "Pomyslnie wczytano dane." << endl;
-// }
+    file.close();
+    cout << "Pomyslnie wczytano dane." << endl;
+}
 
 
 void randomVal(Interface<int>* str, unsigned int seed) {
@@ -231,4 +250,24 @@ void search100(Interface<T>* str[100], unsigned int seed) {
 
 }
     cout << "Sredni czas wyszukiwania: " << totalTime / 100 << " ns.\n";
+}
+
+
+void generateToFile(int howMany, unsigned int Seed) {
+    fs::path pathToFlie = "../DATA/"+FileToGen+".txt";
+    fstream file;
+    file.open(pathToFlie, std::ios::out);
+
+    mt19937 generatorValue(Seed);
+    int value=0;
+
+    for (int i=0; i<howMany; i++) {
+        file<<(generatorValue() % 1000);
+        if (i%25==0){
+            file<<endl;
+        } else {
+            file<<" ";
+        }
+
+    }
 }
