@@ -188,7 +188,22 @@ class List2 :public Interface<T> {
  * @param arg indeks elementu
  * @return wskaźnik na element
  */
-    cell<T>* findInd_backdoor(int arg) {PASS}
+    cell<T>* findInd_backdoor(int arg) {
+                cell<T>*tmp=nullptr;
+        if(arg>(this->Rozmiar-1) || arg<0){
+            std::cout<<"Niepoprawny indeks"<<std::endl;
+            return nullptr;
+        }
+
+        tmp=this->tail;
+        int relInd=(this->Rozmiar-1)-arg;
+        for (int i = 0; i < relInd; i++) {
+            tmp = tmp->getPrev();
+        }
+
+        return tmp;
+    }
+
 
     /**
  * Znajdz wartosc pod indeksem
