@@ -227,7 +227,7 @@ class List1 :public Interface<T> {
  * 
  * @return Rozmiar
  */
-    int getSize(){
+    int getSize() override{
         return Rozmiar;
     }
 };

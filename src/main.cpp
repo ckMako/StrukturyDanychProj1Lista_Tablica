@@ -29,8 +29,13 @@ const int count= 100;//ile tablic/list
  */ string FileToGen ="daneRun";
 void generateToFile(int, unsigned int);
 
+
+/**
+ * @param interface wskaznik na struct
+ * wewnatrz kodu nalezy podac jedynie nazwe pliku bez .txt
+ */
 void fromFile(Interface<int>* str);
-void randomVal100(Interface<int>* str[100], unsigned int seed); 
+int randomVal100(Interface<int>* str[100], unsigned int seed); 
 void randomVal(Interface<int>* str, unsigned int seed);
 template<class T>
 void search100(Interface<T>* str[100], unsigned int seed);
@@ -183,7 +188,7 @@ void randomVal(Interface<int>* str, unsigned int seed) {
 }
 
 
-void randomVal100(Interface<int>* str[100], unsigned int seed) {//losowe wypelnienie 100 struktur
+int randomVal100(Interface<int>* str[100], unsigned int seed) {//losowe wypelnienie 100 struktur
     mt19937 generatorValue(seed);
 
     unsigned int size;
@@ -224,6 +229,7 @@ for(int s = 0; s < 100; s++) {
     
     
         cout << "Sredni czas : " << duration.count() / 100 << " us.\n";
+        return str[0]->getSize();
 }
 
 template<class T>
@@ -235,7 +241,7 @@ void search100(Interface<T>* str[100], unsigned int seed) {
     for(int s = 0; s < 100; s++) {
   if(s%10==0){// dla każdego zestawu struktur losuje wartość, która będzie w nich wyszukiwana
     mt19937 generatorId(seed);
-    int id=generatorId() % 1000;
+    int id=generatorId() % str[s]->getSize();
     value = str[s]->findX(id);
     seed*=2;
     }

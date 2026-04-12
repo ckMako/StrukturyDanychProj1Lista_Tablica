@@ -109,4 +109,8 @@ void clear() override {
     count_ = 0;             
     ptr_ = new T[size_];   
 }
+
+int getSize()override {
+    return size_;
+}
 };

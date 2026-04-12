@@ -39,4 +39,6 @@ class Interface {
 
         //usuniecie wszystkiego
         virtual void clear()=0;
+
+        virtual int getSize()=0;
 };
